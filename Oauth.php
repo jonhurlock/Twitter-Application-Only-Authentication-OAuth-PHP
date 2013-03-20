@@ -1,6 +1,6 @@
 <?php
 /**
-** 	TwitterAppAuth.py
+* 	TwitterAppAuth.py
 *
 *	Created by Jon Hurlock on 2013-03-20.
 * 	
@@ -33,7 +33,6 @@ define('CONSUMER_SECRET', 'enter_your_consumer_secret_here');
 			"POST /oauth2/token HTTP/1.1", 
 			"Host: api.twitter.com", 
 			"User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
-			//"Authorization: Basic ".$base64_encoded_bearer_token."",
 			"Authorization: Basic ".$base64_encoded_bearer_token."",
 			"Content-Type: application/x-www-form-urlencoded;charset=UTF-8", 
 			"Content-Length: 29"
