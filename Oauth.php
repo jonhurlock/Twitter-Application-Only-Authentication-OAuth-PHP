@@ -34,7 +34,8 @@ function get_bearer_token(){
 		"User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
 		"Authorization: Basic ".$base64_encoded_bearer_token."",
 		"Content-Type: application/x-www-form-urlencoded;charset=UTF-8", 
-		"Content-Length: 29"
+		"Content-Length: 29",
+		"grant_type=client_credentials"
 	); 
 
 	$ch = curl_init();  // setup a curl
