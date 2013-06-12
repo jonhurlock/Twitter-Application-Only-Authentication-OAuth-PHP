@@ -41,13 +41,11 @@ function get_bearer_token(){
 	curl_setopt($ch, CURLOPT_URL,$url);  // set url to send to
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set custom headers
 	curl_setopt($ch, CURLOPT_POST, 1); // send as post
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return output
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials"); // post body/fields to be sent
 	$header = curl_setopt($ch, CURLOPT_HEADER, 1); // send custom headers
 	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	ob_start();  // start ouput buffering
-	curl_exec ($ch); // execute the curl
-	$retrievedhtml = ob_get_contents(); // grab the retreived html
-	ob_end_clean(); //End buffering and clean output 
+	$retrievedhtml = curl_exec ($ch); // execute the curl
 	curl_close($ch); // close the curl
 	$output = explode("\n", $retrievedhtml);
 	$bearer_token = '';
@@ -90,13 +88,11 @@ function invalidate_bearer_token($bearer_token){
 	curl_setopt($ch, CURLOPT_URL,$url);  // set url to send to
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set custom headers
 	curl_setopt($ch, CURLOPT_POST, 1); // send as post
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return output
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "access_token=".$bearer_token.""); // post body/fields to be sent
 	$header = curl_setopt($ch, CURLOPT_HEADER, 1); // send custom headers
 	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	ob_start();  // start ouput buffering
-	curl_exec ($ch); // execute the curl
-	$retrievedhtml = ob_get_contents(); // grab the retreived html
-	ob_end_clean(); //End buffering and clean output 
+	$retrievedhtml = curl_exec ($ch); // execute the curl
 	curl_close($ch); // close the curl
 	return $retrievedhtml;
 }
@@ -123,10 +119,8 @@ function search_for_a_term($bearer_token, $query, $result_type='mixed', $rpp='15
 	$ch = curl_init();  // setup a curl
 	curl_setopt($ch, CURLOPT_URL,$url.$formed_url);  // set url to send to
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set custom headers
-	ob_start();  // start ouput buffering
-	$output = curl_exec ($ch); // execute the curl
-	$retrievedhtml = ob_get_contents(); // grab the retreived html
-	ob_end_clean(); //End buffering and clean output 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return output
+	$retrievedhtml = curl_exec ($ch); // execute the curl
 	curl_close($ch); // close the curl
 	return $retrievedhtml;
 }
