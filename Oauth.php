@@ -53,7 +53,7 @@ function get_bearer_token(){
 	$bearer_token = '';
 	foreach($output as $line)
 	{
-		if($pos === false)
+		if($line === false)
 		{
 			// there was no bearer token
 		}else{
@@ -106,14 +106,14 @@ function invalidate_bearer_token($bearer_token){
 * Basic Search of the Search API
 * Based on https://dev.twitter.com/docs/api/1/get/search
 */
-function search_for_a_term($bearer_token, $query, $result_type='mixed' $rpp='15'){
+function search_for_a_term($bearer_token, $query, $result_type='mixed', $rpp='15'){
 	$url = "https://api.twitter.com/1.1/search/tweets.json"; // base url
 	$q = $query; // query term
 
 	$formed_url ='?q='.$q; // fully formed url
 	if($result_type!='mixed'){$formed_url = $formed_url.'&result_type='.$result_type;} // result type - mixed(default), recent, popular
 	if($rpp!='15'){$formed_url = $formed_url.'&rpp='.$rpp;} // results per page - defaulted to 15
-	$formed_url = $formed_url.'&include_entities=true' // makes sure the entities are included, note @mentions are not included see documentation
+	$formed_url = $formed_url.'&include_entities=true'; // makes sure the entities are included, note @mentions are not included see documentation
 	$headers = array( 
 		"GET /1.1/search/tweets.json".$formed_url." HTTP/1.1", 
 		"Host: api.twitter.com", 
