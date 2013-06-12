@@ -1,6 +1,6 @@
 <?php
 /**
-* 	TwitterAppAuth.py
+* 	Oauth.php
 *
 *	Created by Jon Hurlock on 2013-03-20.
 * 	
