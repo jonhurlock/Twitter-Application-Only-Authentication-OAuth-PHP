@@ -104,8 +104,7 @@ function invalidate_bearer_token($bearer_token){
 */
 function search_for_a_term($bearer_token, $query, $result_type='mixed', $rpp='15'){
 	$url = "https://api.twitter.com/1.1/search/tweets.json"; // base url
-	$q = $query; // query term
-
+	$q = urlencode(trim($query)); // query term
 	$formed_url ='?q='.$q; // fully formed url
 	if($result_type!='mixed'){$formed_url = $formed_url.'&result_type='.$result_type;} // result type - mixed(default), recent, popular
 	if($rpp!='15'){$formed_url = $formed_url.'&rpp='.$rpp;} // results per page - defaulted to 15
