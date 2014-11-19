@@ -1,4 +1,4 @@
-Twitter Application-only Authentication (OAuth) using PHP
+#Twitter Application-only Authentication (OAuth) using PHP
 ====================================================
 Provides a set of functions to allow authentication via Twitter's Application-only authentication protocol.
 Methods include the following:
@@ -11,5 +11,9 @@ Then modify lines 14 and 15 to reflect your consumer key and consumer secret.
 At the bottom of the script you will see a demo of getting a bearer token, using the bearer token to perform a search
 and then invalidating the token.
 
+## Notice
+This code is not tested and probably shouldn't be put into production systems, and is only supposed to reperesent the steps involved in performing application-only authentication.
+
+## contact me
 If you have any problems contact me via twitter @jonhurlock
 
