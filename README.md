@@ -1,5 +1,4 @@
 #Twitter Application-only Authentication (OAuth) using PHP
-====================================================
 Provides a set of functions to allow authentication via Twitter's Application-only authentication protocol.
 Methods include the following:
  * getting bearer token
