@@ -32,9 +32,8 @@ function get_bearer_token(){
 		"POST /oauth2/token HTTP/1.1", 
 		"Host: api.twitter.com", 
 		"User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
-		"Authorization: Basic ".$base64_encoded_bearer_token."",
-		"Content-Type: application/x-www-form-urlencoded;charset=UTF-8", 
-		"Content-Length: 29"
+		"Authorization: Basic ".$base64_encoded_bearer_token,
+		"Content-Type: application/x-www-form-urlencoded;charset=UTF-8"
 	); 
 
 	$ch = curl_init();  // setup a curl
@@ -78,10 +77,9 @@ function invalidate_bearer_token($bearer_token){
 		"POST /oauth2/invalidate_token HTTP/1.1", 
 		"Host: api.twitter.com", 
 		"User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
-		"Authorization: Basic ".$base64_encoded_consumer_token."",
+		"Authorization: Basic ".$base64_encoded_consumer_token,
 		"Accept: */*", 
-		"Content-Type: application/x-www-form-urlencoded", 
-		"Content-Length: ".(strlen($bearer_token)+13).""
+		"Content-Type: application/x-www-form-urlencoded"
 	); 
     
 	$ch = curl_init();  // setup a curl
@@ -113,7 +111,7 @@ function search_for_a_term($bearer_token, $query, $result_type='mixed', $count='
 		"GET /1.1/search/tweets.json".$formed_url." HTTP/1.1", 
 		"Host: api.twitter.com", 
 		"User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
-		"Authorization: Bearer ".$bearer_token."",
+		"Authorization: Bearer ".$bearer_token
 	);
 	$ch = curl_init();  // setup a curl
 	curl_setopt($ch, CURLOPT_URL,$url.$formed_url);  // set url to send to
